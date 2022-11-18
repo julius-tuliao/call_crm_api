@@ -10,7 +10,7 @@ function create_token(){
     
     $username = $GLOBALS['config']['username'];
     $password = $GLOBALS['config']['password'];
-    $endpoint = 'http://172.20.0.228/login';
+    $endpoint =  $GLOBALS['config']['login_endpoint'];
     
     $credentials = base64_encode("$username:$password");
     
