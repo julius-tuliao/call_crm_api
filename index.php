@@ -52,7 +52,7 @@ function post_to_bcrm($address,$ch_code,$contact,$source,$start_date,$end_date,$
 
   
   // Store request in a variable
-  $postData = [ 
+  $post_data = [ 
     "address"=>$address,
    "ch_code"=>$ch_code,
    "contact"=>$contact,
@@ -79,7 +79,7 @@ function post_to_bcrm($address,$ch_code,$contact,$source,$start_date,$end_date,$
     curl_setopt_array($curl, array(
       CURLOPT_URL => $GLOBALS['config']["status_endpoint"],
       CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POSTFIELDS => json_encode($postData),
+      CURLOPT_POSTFIELDS => json_encode($post_data),
       CURLOPT_HTTPHEADER => array(
         "x-access-tokens: $token",
         "Content-Type: application/json"
@@ -87,6 +87,7 @@ function post_to_bcrm($address,$ch_code,$contact,$source,$start_date,$end_date,$
     ));
 
 
+    // execute
     $response = curl_exec($curl);
     $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
