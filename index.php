@@ -35,11 +35,10 @@ function create_token(){
     // Debug the result
     $obj = json_decode($result,true);
     
-    // echo $obj["token"];
 
     $file = $GLOBALS['config']['token_file'];
     
-    // Append a new person to the file
+    // Append  token to the file
     $current = $obj["token"];
     // Write the contents back to the file
     file_put_contents($file, $current);
