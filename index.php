@@ -111,8 +111,8 @@ function post_to_bcrm($address,$ch_code,$contact,$source,$start_date,$end_date,$
 
 
 $address="";
-$ch_code="01BDFWC2211-1";
-$contact="09183859059";
+$ch_code="ode-1";
+$contact="12345678";
 $source="Mobile";
 $start_date=null;
 $end_date=null;
