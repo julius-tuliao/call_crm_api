@@ -67,8 +67,8 @@ function post_to_bcrm($address,$ch_code,$contact,$source,$start_date,$end_date,$
    "disposition_code"=>$disposition_code
   ];
 
-  $max_retry = 0;
-  
+  $count_of_retry = 0;
+  $max_retry = 10;
   
   do {
   
@@ -89,13 +89,13 @@ function post_to_bcrm($address,$ch_code,$contact,$source,$start_date,$end_date,$
 
     // execute
     $response = curl_exec($curl);
-    $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    $http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
     curl_close($curl);
 
-    echo $httpcode;
+    echo $http_code;
     
-    if($httpcode == 498 || $httpcode == 200){
+    if($http_code == 498 || $http_code == 200){
 
       echo 'error';
       create_token();
@@ -103,8 +103,8 @@ function post_to_bcrm($address,$ch_code,$contact,$source,$start_date,$end_date,$
     }
  
 
-    $max_retry++;
-  } while ($max_retry <= 10 && $httpcode != 201);
+    $count_of_retry++;
+  } while ($count_of_retry <= $max_retry && $http_code != 201);
 
   
 }
